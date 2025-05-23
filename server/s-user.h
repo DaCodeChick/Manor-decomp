@@ -9,4 +9,5 @@ struct ServerUserRec
 	byte status;
 };
 
+bool UsIsUser(const ServerUserRec *user);
 ServerUserRec *usIsUser(const ServerUserRec *user);
