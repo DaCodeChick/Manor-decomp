@@ -2,8 +2,8 @@
 
 struct ServerUserRec
 {
-	ServerUserRec *prevUser;
 	ServerUserRec *nextUser;
+	ServerUserRec *prevUser;
 	ServerUserRec *field2_0x8;
 	ServerUserRec *field3_0xc;
 	byte status;

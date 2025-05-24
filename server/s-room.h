@@ -4,8 +4,8 @@
 
 struct ServerRoomRec
 {
-	ServerRoomRec *prevRoom;
 	ServerRoomRec *nextRoom;
+	ServerRoomRec *prevRoom;
 	ushort roomID;
 	ushort flags;
 	ushort maxOccupancy;
