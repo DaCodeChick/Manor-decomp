@@ -1,6 +1,7 @@
 #include "s-secure.h"
 
 #include <cstring>
+#include <ctime>
 
 // manord: 0809a67c
 static const uint gBase36Weights[] = {
@@ -91,7 +92,7 @@ static short srgenRandom(short seed, short range)
 
 // manord: 0805bd28
 // Manorsrvr.exe: 004147f0
-static void SrgEnDecrypt(byte *data, byte *key, const void *bitPermutations)
+static void SrgEnDecrypt(byte *data, byte *key, const void *decryptionTable)
 {
 	short sVar1;
 	short sVar2;
@@ -115,7 +116,7 @@ static void SrgEnDecrypt(byte *data, byte *key, const void *bitPermutations)
 	do
 	{
 		iVar3 = srgenBitTst((ulonglong)data,
-		                    (ushort) * (byte *)((int)sVar1 + (ulonglong)bitPermutations));
+		                    (ushort) * (byte *)((int)sVar1 + (ulonglong)decryptionTable));
 		if (iVar3 != 0)
 		{
 			srgenBitSet((ulonglong)local_18, sVar1);
@@ -163,4 +164,108 @@ static void SrgEnPermtable(short seed, void *forwardTable, const void *reverseTa
 		sVar2 = sVar2 + 1;
 	} while (sVar2 < 0xa0);
 	return;
+}
+
+// manord: 0805bdcc
+// Manorsrvr.exe: 00414a00
+int SrgDecode(char *str, uint *userID, uint *expires, short *productID, short *maxOccupancy,
+              const void *decryptionTable)
+{
+	char cVar1;
+	size_t sVar2;
+	uint uVar3;
+	uint uVar4;
+	int iVar5;
+	uint uVar6;
+	char *__dest;
+	char *__s;
+	ushort uVar7;
+	char *pcVar8;
+	byte local_259;
+	uint local_258[4];
+	undefined4 local_248;
+	undefined1 local_244[160];
+	int local_1a4[40];
+	char local_104[256];
+
+	local_259 = 10;
+	*productID = 0;
+	if (userID != NULL)
+	{
+		*userID = 0;
+	}
+	*expires = 0;
+	*maxOccupancy = 0x19;
+	__s = local_104;
+	__dest = __s;
+	pcVar8 = str;
+	do
+	{
+		std::strcpy(__dest, pcVar8);
+		sVar2 = std::strspn(__s, RGCnvrsnTbl);
+		uVar6 = sVar2 & 0xffff;
+		uVar4 = 0xffffffff;
+		pcVar8 = __s;
+		uVar4 = std::strlen(pcVar8);
+		if (uVar6 == ~uVar4 - 1)
+			break;
+		__dest = __s + uVar6;
+		pcVar8 = local_104 + uVar6 + 1;
+	} while (true);
+	iVar5 = -1;
+	pcVar8 = __s;
+	iVar5 = std::strlen(pcVar8);
+	if (iVar5 == -0x25)
+	{
+		uVar7 = 0;
+		do
+		{
+			srgBase36(__s, local_258 + uVar7);
+			uVar3 = ntohl(local_258[uVar7]);
+			local_258[uVar7] = uVar3;
+			__s = __s + 7;
+			uVar7 = uVar7 + 1;
+		} while (uVar7 < 5);
+		if (decryptionTable == NULL)
+		{
+			SrgEnPermtable(10, local_244, local_1a4);
+			SrgEnDecrypt((byte *)local_258, &local_259, local_1a4);
+		}
+		else
+		{
+			SrgEnDecrypt((byte *)local_258, &local_259, decryptionTable);
+		}
+		uVar7 = 0;
+		do
+		{
+			uVar3 = ntohl(local_258[uVar7]);
+			local_258[uVar7] = uVar3;
+			uVar7 = uVar7 + 1;
+		} while (uVar7 < 5);
+		if (local_258[2] == (local_258[0] ^ local_258[1] ^ local_258[3] ^ local_248))
+		{
+			uVar4 = std::time(NULL);
+			if (userID != NULL)
+			{
+				*userID = local_258[0];
+			}
+			*expires = local_258[1];
+			*maxOccupancy = *(short *)((void *)(local_248 + 2));
+			*productID = (short)local_248;
+			strcpy(str, local_104);
+			if (uVar4 <= local_258[1])
+			{
+				return 0;
+			}
+			*productID = 0;
+			if (userID != NULL)
+			{
+				*userID = 0;
+			}
+			*expires = 0;
+			*maxOccupancy = 0x19;
+			return -1;
+		}
+	}
+	return -1;
 }
