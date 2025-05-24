@@ -36,3 +36,18 @@ enum
 	MSG_LISTOFALLUSERS = 0x556c6c73,
 	MSG_XTALK = 0x78546c6b,
 };
+
+enum
+{
+	RF_DropZone = 1,
+	RF_NoGuests = 2,
+	RF_Timeout = 4,
+	RF_Private = 8,
+	RF_Hidden = 16,
+	RF_WizardsOnly = 32,
+	RF_NoLooseProps = 64,
+	RF_NoPainting = 128,
+	RF_NoWhispering = 256,
+	RF_CyborgFreeZone = 512,
+	RF_NoSpoofing = 1024,
+};
