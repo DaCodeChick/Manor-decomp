@@ -59,8 +59,8 @@ static void SrgEnDecrypt(byte *data, byte *key, const void *bitPermutations)
 	sVar1 = 0;
 	do
 	{
-		iVar3 =
-		    srgenBitTst((int)data, (ushort) * (byte *)((int)sVar1 + (ulonglong)bitPermutations));
+		iVar3 = srgenBitTst((ulonglong)data,
+		                    (ushort) * (byte *)((int)sVar1 + (ulonglong)bitPermutations));
 		if (iVar3 != 0)
 		{
 			srgenBitSet((ulonglong)local_18, sVar1);
