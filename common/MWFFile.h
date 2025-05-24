@@ -2,7 +2,7 @@
 
 #include "typedefs.h"
 
-class MWFFile
+class EXPORT MWFFile
 {
 public:
 	enum

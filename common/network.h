@@ -10,4 +10,4 @@ struct Connection
 	uint dataWaiting;
 };
 
-uint NwCheckDataWaiting(const Connection *connection);
+EXPORT uint NwCheckDataWaiting(const Connection *connection);

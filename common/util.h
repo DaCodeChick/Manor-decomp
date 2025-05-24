@@ -2,5 +2,5 @@
 
 #include "typedefs.h"
 
-int enBitTst(int value, short bit);
-short enRandom(short seed, short bound);
+EXPORT int enBitTst(int value, short bit);
+EXPORT short enRandom(short seed, short bound);
