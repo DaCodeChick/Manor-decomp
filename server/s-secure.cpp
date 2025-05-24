@@ -6,6 +6,7 @@
 static short gSrgLastRnd = 0;
 
 // manord: 0805bc98
+// Manorsrvr.exe: inlined
 static void srgenBitSet(int value, short bit)
 {
 	byte *pbVar1;
@@ -22,6 +23,7 @@ static void srgenBitSet(int value, short bit)
 }
 
 // manord: 0805bc54
+// Manorsrvr.exe: inlined
 static int srgenBitTst(int value, short bit)
 {
 	short sVar1;
@@ -35,7 +37,20 @@ static int srgenBitTst(int value, short bit)
 	               0x80 >> ((char)bit - (char)((sVar1 >> 3) << 3) & 0x1fU)) != 0);
 }
 
+// manord: 0805bb70
+// Manorsrvr.exe: inlined
+static short srgenRandom(short seed, short range)
+{
+	if (seed != 0)
+	{
+		gSrgLastRnd = seed;
+	}
+	gSrgLastRnd = (short)((gSrgLastRnd * 7 + 3) % (int)range);
+	return gSrgLastRnd;
+}
+
 // manord: 0805bd28
+// Manorsrvr.exe: 004146b0
 static void SrgEnDecrypt(byte *data, byte *key, const void *bitPermutations)
 {
 	short sVar1;
@@ -75,17 +90,6 @@ static void SrgEnDecrypt(byte *data, byte *key, const void *bitPermutations)
 		data = data + 4;
 	}
 	return;
-}
-
-// manord: 0805bb70
-static short srgenRandom(short seed, short range)
-{
-	if (seed != 0)
-	{
-		gSrgLastRnd = seed;
-	}
-	gSrgLastRnd = (short)((gSrgLastRnd * 7 + 3) % (int)range);
-	return gSrgLastRnd;
 }
 
 // manord: 0805bbb4
