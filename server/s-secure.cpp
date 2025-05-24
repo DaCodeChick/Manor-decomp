@@ -2,8 +2,48 @@
 
 #include <cstring>
 
+// manord: 0809a67c
+static const uint gBase36Weights[] = {
+    0x1, 0x24, 0x510, 0xb640, 0x19a100, 0x39aa400, 0x81bf100,
+};
+
 // manord: 080a9f6e
 static short gSrgLastRnd = 0;
+
+// manord: 080a9f48
+static const char RGCnvrsnTbl[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+// manord: 0805bcd0
+// Manorsrvr.exe: inlined
+void srgBase36(char *base36, void *decoded)
+{
+	const char *pcVar1;
+	int iVar2;
+	short sVar3;
+	const uint *puVar4;
+	uint *puVar5;
+	uint local_20[7];
+
+	puVar4 = gBase36Weights;
+	puVar5 = local_20;
+	for (iVar2 = 7; iVar2 != 0; iVar2 = iVar2 + -1)
+	{
+		*puVar5 = *puVar4;
+		puVar4 = puVar4 + 1;
+		puVar5 = puVar5 + 1;
+	}
+	iVar2 = 0;
+	sVar3 = 6;
+	do
+	{
+		pcVar1 = std::strchr(RGCnvrsnTbl, (int)*base36);
+		iVar2 = iVar2 + (ulonglong)(pcVar1 + (ulonglong)RGCnvrsnTbl) * local_20[sVar3];
+		base36 = base36 + 1;
+		sVar3 = sVar3 + -1;
+	} while (-1 < sVar3);
+	*(int *)decoded = iVar2;
+	return;
+}
 
 // manord: 0805bc98
 // Manorsrvr.exe: inlined
