@@ -50,7 +50,7 @@ static short srgenRandom(short seed, short range)
 }
 
 // manord: 0805bd28
-// Manorsrvr.exe: 004146b0
+// Manorsrvr.exe: 004147f0
 static void SrgEnDecrypt(byte *data, byte *key, const void *bitPermutations)
 {
 	short sVar1;
@@ -93,6 +93,7 @@ static void SrgEnDecrypt(byte *data, byte *key, const void *bitPermutations)
 }
 
 // manord: 0805bbb4
+// Manorsrvr.exe: 004146b0
 static void SrgEnPermtable(short seed, void *forwardTable, const void *reverseTable)
 {
 	short sVar1;
