@@ -54,5 +54,6 @@ enum
 
 enum
 {
+	U_Honorary = 32,
 	U_RejectPrivate = 128,
 };
