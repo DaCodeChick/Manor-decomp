@@ -51,3 +51,8 @@ enum
 	RF_CyborgFreeZone = 512,
 	RF_NoSpoofing = 1024,
 };
+
+enum
+{
+	U_RejectPrivate = 128,
+};
