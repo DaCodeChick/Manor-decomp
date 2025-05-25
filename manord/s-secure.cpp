@@ -92,7 +92,7 @@ static short srgenRandom(short seed, short range)
 
 // manord: 0805bd28
 // Manorsrvr.exe: 004147f0
-static void SrgEnDecrypt(byte *data, byte *key, const void *decryptionTable)
+static void SrgEnDecrypt(byte *data, byte *key, const void *table)
 {
 	short sVar1;
 	short sVar2;
@@ -115,8 +115,7 @@ static void SrgEnDecrypt(byte *data, byte *key, const void *decryptionTable)
 	sVar1 = 0;
 	do
 	{
-		iVar3 = srgenBitTst((ulonglong)data,
-		                    (ushort) * (byte *)((int)sVar1 + (ulonglong)decryptionTable));
+		iVar3 = srgenBitTst((ulonglong)data, (ushort) * (byte *)((int)sVar1 + (ulonglong)table));
 		if (iVar3 != 0)
 		{
 			srgenBitSet((ulonglong)local_18, sVar1);
@@ -135,32 +134,32 @@ static void SrgEnDecrypt(byte *data, byte *key, const void *decryptionTable)
 
 // manord: 0805bbb4
 // Manorsrvr.exe: 004146b0
-static void SrgEnPermtable(short seed, void *forwardTable, const void *reverseTable)
+static void SrgEnPermtable(short seed, void *forward, const void *reverse)
 {
 	short sVar1;
 	short seed_00;
 	short sVar2;
 
-	std::memset(forwardTable, 0xff, 0xa0);
+	std::memset(forward, 0xff, 0xa0);
 	gSrgLastRnd = seed;
 	srgenRandom(0, 0xa0);
 	sVar2 = 0;
 	do
 	{
 		sVar1 = srgenRandom(0, 0xa0);
-		if (*(char *)((int)sVar1 + (ulonglong)forwardTable) != -1)
+		if (*(char *)((int)sVar1 + (ulonglong)forward) != -1)
 		{
 			seed_00 = 1;
 			while (true)
 			{
 				sVar1 = srgenRandom(seed_00, 0xa0);
-				if (*(char *)((int)sVar1 + (ulonglong)forwardTable) == -1)
+				if (*(char *)((int)sVar1 + (ulonglong)forward) == -1)
 					break;
 				seed_00 = seed_00 + 1;
 			}
 		}
-		*(char *)((int)sVar1 + (ulonglong)forwardTable) = (char)sVar2;
-		*(char *)((int)sVar2 + (ulonglong)reverseTable) = (char)sVar1;
+		*(char *)((int)sVar1 + (ulonglong)forward) = (char)sVar2;
+		*(char *)((int)sVar2 + (ulonglong)reverse) = (char)sVar1;
 		sVar2 = sVar2 + 1;
 	} while (sVar2 < 0xa0);
 	return;
@@ -169,7 +168,7 @@ static void SrgEnPermtable(short seed, void *forwardTable, const void *reverseTa
 // manord: 0805bdcc
 // Manorsrvr.exe: 00414a00
 int SrgDecode(char *str, uint *userID, uint *expires, short *productID, short *maxOccupancy,
-              const void *decryptionTable)
+              const void *table)
 {
 	char cVar1;
 	size_t sVar2;
@@ -226,14 +225,14 @@ int SrgDecode(char *str, uint *userID, uint *expires, short *productID, short *m
 			__s = __s + 7;
 			uVar7 = uVar7 + 1;
 		} while (uVar7 < 5);
-		if (decryptionTable == NULL)
+		if (table == NULL)
 		{
 			SrgEnPermtable(10, local_244, local_1a4);
 			SrgEnDecrypt((byte *)local_258, &local_259, local_1a4);
 		}
 		else
 		{
-			SrgEnDecrypt((byte *)local_258, &local_259, decryptionTable);
+			SrgEnDecrypt((byte *)local_258, &local_259, table);
 		}
 		uVar7 = 0;
 		do

@@ -7,9 +7,9 @@ extern "C"
 {
 #endif // __cplusplus
 
-	EXPORT void enBitSet(uint *value, short bit);
-	EXPORT int enBitTst(uint value, short bit);
-	EXPORT short enRandom(short seed, short bound);
+	EXPORT void EnCrypt(void *data, void *key, const void *table);
+	EXPORT void EnDecrypt(void *data, void *key, const void *table);
+	EXPORT void EnPermtable(short seed, void *forward, const void *reverse);
 
 #ifdef __cplusplus
 }
