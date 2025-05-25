@@ -1,4 +1,5 @@
 set(SOURCES
+	MWF.c
 	MWFFile.cpp
 	network.c
 	util.c
@@ -6,6 +7,7 @@ set(SOURCES
 
 set(HEADERS
 	manor.h
+	MWF.h
 	MWFFile.h
 	network.h
 	typedefs.h
