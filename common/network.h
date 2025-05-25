@@ -3,18 +3,19 @@
 #include "typedefs.h"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif // __cplusplus
 
-typedef struct _Connection
-{
-	struct _Connection *next;
-	struct _Connection *prev;
-	Socket sock;
-	uint dataWaiting;
-} Connection;
+	typedef struct _Connection
+	{
+		struct _Connection *next;
+		struct _Connection *prev;
+		Socket sock;
+		uint dataWaiting;
+	} Connection;
 
-EXPORT uint NwCheckDataWaiting(const Connection *connection);
+	EXPORT uint NwCheckDataWaiting(const Connection *connection);
 
 #ifdef __cplusplus
 }

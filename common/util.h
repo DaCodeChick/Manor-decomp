@@ -3,11 +3,13 @@
 #include "typedefs.h"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif // __cplusplus
 
-EXPORT int enBitTst(int value, short bit);
-EXPORT short enRandom(short seed, short bound);
+	EXPORT void enBitSet(uint *value, short bit);
+	EXPORT int enBitTst(uint value, short bit);
+	EXPORT short enRandom(short seed, short bound);
 
 #ifdef __cplusplus
 }

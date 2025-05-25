@@ -3,6 +3,22 @@
 // manord: 080a312c
 static short gLastRnd = 0;
 
+// manord: 08048248
+void enBitSet(uint *value, short bit)
+{
+	byte *pbVar1;
+	short sVar2;
+
+	sVar2 = bit;
+	if (bit < 0)
+	{
+		sVar2 = bit + 7;
+	}
+	pbVar1 = (byte *)((int)(sVar2 >> 3) + (ulonglong)value);
+	*pbVar1 = *pbVar1 | (byte)(0x80 >> ((char)bit - (char)((sVar2 >> 3) << 3) & 0x1fU));
+	return;
+}
+
 // manord: 08048204
 int enBitTst(int value, short bit)
 {
