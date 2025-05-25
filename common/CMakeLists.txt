@@ -1,7 +1,7 @@
 set(SOURCES
 	MWFFile.cpp
-	network.cpp
-	util.cpp
+	network.c
+	util.c
 )
 
 set(HEADERS

@@ -9,8 +9,6 @@ typedef SOCKET Socket;
 typedef int Socket;
 #endif
 
-#include <cstring>
-
 typedef unsigned char byte;
 typedef long long longlong;
 typedef unsigned char uchar;
