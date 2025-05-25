@@ -1,6 +1,7 @@
 #include "MWF.h"
 
 // Manorsrvr.exe: 0041cdd0
+// The Manor.exe: 0040f510
 HANDLE MWF_CreateSemaphore(void)
 {
 	HANDLE pvVar1;
@@ -9,6 +10,7 @@ HANDLE MWF_CreateSemaphore(void)
 }
 
 // Manorsrvr.exe: 0041cdf0
+// The Manor.exe: 0040f530
 void MWF_DeleteSemaphore(HANDLE semaphore)
 {
 	CloseHandle(semaphore);
@@ -16,6 +18,7 @@ void MWF_DeleteSemaphore(HANDLE semaphore)
 }
 
 // Manorsrvr.exe: 0041ce60
+// The Manor.exe: 0040f5c0
 void MWF_ReleaseSemaphore(HANDLE semaphore)
 {
 	ReleaseMutex(semaphore);
@@ -23,6 +26,7 @@ void MWF_ReleaseSemaphore(HANDLE semaphore)
 }
 
 // Manorsrvr.exe: 0041ce00
+// The Manor.exe: 0040f540
 BOOL MWF_TrySemaphore(HANDLE semaphore)
 {
 	DWORD DVar1;
@@ -36,6 +40,7 @@ BOOL MWF_TrySemaphore(HANDLE semaphore)
 }
 
 // Manorsrvr.exe: 0041ce30
+// The Manor.exe: 0040f580
 void MWF_WaitSemaphore(HANDLE semaphore)
 {
 	DWORD DVar1;
@@ -49,6 +54,7 @@ void MWF_WaitSemaphore(HANDLE semaphore)
 }
 
 // Manorsrvr.exe: 0041cdc0
+// The Manor.exe: 0040f500
 void MWF_YieldThread(void)
 {
 	return;

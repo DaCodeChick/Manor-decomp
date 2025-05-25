@@ -11,6 +11,7 @@ extern "C"
 	EXPORT void MWF_DeleteSemaphore(HANDLE semaphore);
 	EXPORT void MWF_ReleaseSemaphore(HANDLE semaphore);
 	EXPORT BOOL MWF_TrySemaphore(HANDLE semaphore);
+	EXPORT void MWF_UnlockOffscreen();
 	EXPORT void MWF_WaitSemaphore(HANDLE semaphore);
 	EXPORT void MWF_YieldThread();
 
