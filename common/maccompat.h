@@ -13,6 +13,7 @@ extern "C"
 	};
 
 	EXPORT void DisposePtr(void *inPtr);
+	EXPORT short MemError();
 	EXPORT void *NewPtrClear(size_t inSize);
 
 #ifdef __cplusplus

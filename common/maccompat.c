@@ -6,6 +6,19 @@
 // Manorsrvr.exe: 004942a8
 static short gError = 0;
 
+// manord: 0805c23c
+void DisposePtr(void *inPtr)
+{
+	free(inPtr);
+	return;
+}
+
+// Manorsrvr.exe: 0041bab0
+short MemError(void)
+{
+	return gError;
+}
+
 // manord: 0805c210
 // Manorsrvr.exe: 0041bbb0
 void *NewPtrClear(size_t inSize)
@@ -22,11 +35,4 @@ void *NewPtrClear(size_t inSize)
 		gError = memFullErr;
 	}
 	return __s;
-}
-
-// manord: 0805c23c
-void DisposePtr(void *inPtr)
-{
-	free(inPtr);
-	return;
 }
