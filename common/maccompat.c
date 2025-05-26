@@ -20,6 +20,19 @@ short MemError(void)
 	return gLastError;
 }
 
+// Manorsrvr.exe: 0041bb30
+void *NewPtr(size_t size)
+{
+	void *pvVar1;
+
+	pvVar1 = malloc(size);
+	if (pvVar1 == NULL)
+	{
+		gLastError = -0x6c;
+	}
+	return;
+}
+
 // manord: 0805c210
 // Manorsrvr.exe: 0041bbb0
 void *NewPtrClear(size_t size)

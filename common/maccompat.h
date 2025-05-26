@@ -14,6 +14,7 @@ extern "C"
 
 	EXPORT void DisposePtr(void *ptr);
 	EXPORT short MemError();
+	EXPORT void *NewPtr(size_t size);
 	EXPORT void *NewPtrClear(size_t size);
 
 #ifdef __cplusplus
