@@ -1,5 +1,11 @@
 #include "MWF.h"
 
+struct
+{
+	HANDLE h;
+	uint threadID;
+} MWFThread;
+
 // Manorsrvr.exe: 0041cdd0
 // The Manor.exe: 0040f510
 HANDLE MWF_CreateSemaphore(void)
