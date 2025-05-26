@@ -11,6 +11,7 @@ extern "C"
 
 	enum
 	{
+		noErr = 0,
 		memFullErr = -108
 	};
 

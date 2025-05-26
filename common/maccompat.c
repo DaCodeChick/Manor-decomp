@@ -73,6 +73,22 @@ void *NewPtr(size_t size)
 // Manorsrvr.exe: 0041bbb0
 void *NewPtrClear(size_t size)
 {
+#ifdef _WIN32
+	{
+		LPVOID pvVar1;
+
+		pvVar1 = HeapAlloc(gHeap, HEAP_ZERO_MEMORY, size);
+		if (pvVar1 == NULL)
+		{
+			gLastError = memFullErr;
+		}
+		else
+		{
+			gLastError = noErr;
+		}
+		return pvVar1;
+	}
+#else
 	void *__s;
 
 	__s = malloc(size);
@@ -85,4 +101,5 @@ void *NewPtrClear(size_t size)
 		gLastError = memFullErr;
 	}
 	return __s;
+#endif // _WIN32
 }
