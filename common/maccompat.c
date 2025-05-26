@@ -4,7 +4,7 @@
 #include <string.h>
 
 // Manorsrvr.exe: 004942a8
-static short gError = 0;
+static short gLastError = 0;
 
 // manord: 0805c23c
 // Manorsrvr.exe: 0041bac0
@@ -17,7 +17,7 @@ void DisposePtr(void *ptr)
 // Manorsrvr.exe: 0041bab0
 short MemError(void)
 {
-	return gError;
+	return gLastError;
 }
 
 // manord: 0805c210
@@ -33,7 +33,7 @@ void *NewPtrClear(size_t size)
 	}
 	else
 	{
-		gError = memFullErr;
+		gLastError = memFullErr;
 	}
 	return __s;
 }
