@@ -167,9 +167,9 @@ float htonf(float f)
 	u_long local_8;
 
 	local_c = f;
-	memmove(&local_8, &local_c, 4);
+	memmove(&local_8, &local_c, sizeof(float));
 	local_8 = htonl(local_8);
-	memmove(&local_c, &local_8, 4);
+	memmove(&local_c, &local_8, sizeof(float));
 	return local_c;
 }
 
@@ -180,8 +180,8 @@ float ntohf(float f)
 	u_long local_8;
 
 	local_c = f;
-	memmove(&local_8, &local_c, 4);
+	memmove(&local_8, &local_c, sizeof(float));
 	local_8 = ntohl(local_8);
-	memmove(&local_c, &local_8, 4);
+	memmove(&local_c, &local_8, sizeof(float));
 	return local_c;
 }
