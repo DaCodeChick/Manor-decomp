@@ -7,9 +7,10 @@
 static short gError = 0;
 
 // manord: 0805c23c
-void DisposePtr(void *inPtr)
+// Manorsrvr.exe: 0041bac0
+void DisposePtr(void *ptr)
 {
-	free(inPtr);
+	free(ptr);
 	return;
 }
 
@@ -21,14 +22,14 @@ short MemError(void)
 
 // manord: 0805c210
 // Manorsrvr.exe: 0041bbb0
-void *NewPtrClear(size_t inSize)
+void *NewPtrClear(size_t size)
 {
 	void *__s;
 
-	__s = malloc(inSize);
+	__s = malloc(size);
 	if (__s != NULL)
 	{
-		memset(__s, 0, inSize);
+		memset(__s, 0, size);
 	}
 	else
 	{

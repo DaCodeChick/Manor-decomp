@@ -12,9 +12,9 @@ extern "C"
 		memFullErr = -108
 	};
 
-	EXPORT void DisposePtr(void *inPtr);
+	EXPORT void DisposePtr(void *ptr);
 	EXPORT short MemError();
-	EXPORT void *NewPtrClear(size_t inSize);
+	EXPORT void *NewPtrClear(size_t size);
 
 #ifdef __cplusplus
 }
