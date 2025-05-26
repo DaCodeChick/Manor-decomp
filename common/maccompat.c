@@ -3,6 +3,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+struct OpaqueHandle
+{
+	void *ptr;
+	size_t size;
+};
+
 // Manorsrvr.exe: 004942a8
 static short gLastError = 0;
 
@@ -20,6 +26,36 @@ short MemError(void)
 	return gLastError;
 }
 
+// Manorsrvr.exe: 0041bad0
+Handle NewHandleClear(size_t size)
+{
+	Handle _Memory;
+	uint uVar1;
+
+	_Memory = (Handle)NewPtrClear(sizeof(struct OpaqueHandle));
+	if (_Memory != NULL)
+	{
+		if (size < 1)
+		{
+			_Memory->ptr = NULL;
+		}
+		else
+		{
+			uVar1 = NewPtr(size);
+			_Memory->ptr = uVar1;
+			if (_Memory->ptr == 0)
+			{
+				free(_Memory);
+				gLastError = memFullErr;
+				return NULL;
+			}
+		}
+		_Memory->size = size;
+		gLastError = 0;
+	}
+	return _Memory;
+}
+
 // Manorsrvr.exe: 0041bb30
 void *NewPtr(size_t size)
 {
@@ -28,7 +64,7 @@ void *NewPtr(size_t size)
 	pvVar1 = malloc(size);
 	if (pvVar1 == NULL)
 	{
-		gLastError = -0x6c;
+		gLastError = memFullErr;
 	}
 	return;
 }

@@ -7,6 +7,8 @@ extern "C"
 {
 #endif // __cplusplus
 
+	typedef struct OpaqueHandle *Handle;
+
 	enum
 	{
 		memFullErr = -108
@@ -14,6 +16,7 @@ extern "C"
 
 	EXPORT void DisposePtr(void *ptr);
 	EXPORT short MemError();
+	EXPORT Handle NewHandleClear(size_t size);
 	EXPORT void *NewPtr(size_t size);
 	EXPORT void *NewPtrClear(size_t size);
 
