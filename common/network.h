@@ -20,6 +20,7 @@ extern "C"
 
 	EXPORT uint NwCheckDataWaiting(const Connection *connection);
 	EXPORT void NwFlagErrorDiscnct(Connection *connection);
+	EXPORT void NwGetIPAddress(const Connection *connection, char *buffer);
 
 #ifdef __cplusplus
 }
