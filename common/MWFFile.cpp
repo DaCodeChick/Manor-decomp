@@ -68,8 +68,7 @@ DWORD MWFFile::GetLastError() const
 }
 
 // Manorsrvr.exe: 004166d0
-DWORD
-MWFFile::Read(LPVOID lpBuffer, DWORD dwBytesToRead)
+DWORD MWFFile::Read(LPVOID lpBuffer, DWORD dwBytesToRead)
 {
 	BOOL BVar1;
 	DWORD DVar2;
@@ -86,8 +85,7 @@ MWFFile::Read(LPVOID lpBuffer, DWORD dwBytesToRead)
 }
 
 // Manorsrvr.exe: 00416690
-DWORD
-MWFFile::Seek(LONG lDistanceToMove, byte bMoveMethod)
+DWORD MWFFile::Seek(LONG lDistanceToMove, byte bMoveMethod)
 {
 	DWORD DVar1;
 
@@ -102,8 +100,7 @@ MWFFile::Seek(LONG lDistanceToMove, byte bMoveMethod)
 }
 
 // Manorsrvr.exe: 00416710
-DWORD
-MWFFile::Write(LPCVOID lpBuffer, DWORD dwBytesToWrite)
+DWORD MWFFile::Write(LPCVOID lpBuffer, DWORD dwBytesToWrite)
 {
 	BOOL BVar1;
 	DWORD DVar2;
