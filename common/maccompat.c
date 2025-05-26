@@ -3,7 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Manorsrvr.exe: 004942a8
+static short gError = 0;
+
 // manord: 0805c210
+// Manorsrvr.exe: 0041bbb0
 void *NewPtrClear(size_t inSize)
 {
 	void *__s;
@@ -12,6 +16,10 @@ void *NewPtrClear(size_t inSize)
 	if (__s != NULL)
 	{
 		memset(__s, 0, inSize);
+	}
+	else
+	{
+		gError = memFullErr;
 	}
 	return __s;
 }

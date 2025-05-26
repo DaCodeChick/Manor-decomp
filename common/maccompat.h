@@ -7,6 +7,11 @@ extern "C"
 {
 #endif // __cplusplus
 
+	enum
+	{
+		memFullErr = -108
+	};
+
 	EXPORT void DisposePtr(void *inPtr);
 	EXPORT void *NewPtrClear(size_t inSize);
 
