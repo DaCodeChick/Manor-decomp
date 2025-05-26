@@ -100,3 +100,21 @@ MWFFile::Seek(LONG lDistanceToMove, byte bMoveMethod)
 	}
 	return DVar1;
 }
+
+// Manorsrvr.exe: 00416710
+DWORD
+MWFFile::Write(LPCVOID lpBuffer, DWORD dwBytesToWrite)
+{
+	BOOL BVar1;
+	DWORD DVar2;
+	DWORD local_c;
+
+	BVar1 = WriteFile(this->m_hFile, lpBuffer, dwBytesToWrite, &local_c, NULL);
+	if (BVar1 == 0)
+	{
+		DVar2 = ::GetLastError();
+		this->m_dwLastError = DVar2;
+		local_c = INVALID_FILE_SIZE;
+	}
+	return local_c;
+}

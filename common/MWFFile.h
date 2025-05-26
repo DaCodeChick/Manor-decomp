@@ -19,6 +19,7 @@ public:
 	DWORD GetLastError() const;
 	DWORD Read(LPVOID lpBuffer, DWORD dwBytesToRead);
 	DWORD Seek(LONG lDistanceToMove, byte bMoveMethod);
+	DWORD Write(LPCVOID lpBuffer, DWORD dwBytesToWrite);
 
 private:
 	HANDLE m_hFile;
