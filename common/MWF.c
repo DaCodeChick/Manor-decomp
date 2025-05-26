@@ -3,7 +3,7 @@
 struct
 {
 	HANDLE h;
-	uint threadID;
+	DWORD threadID;
 } MWFThread;
 
 // Manorsrvr.exe: 0041cdd0
