@@ -159,3 +159,29 @@ void EnPermtable(short seed, void *forward, const void *reverse)
 	} while (sVar2 < 0x80);
 	return;
 }
+
+// Manorsrvr.exe: 00416370
+float htonf(float f)
+{
+	float local_c;
+	u_long local_8;
+
+	local_c = f;
+	memmove(&local_8, &local_c, 4);
+	local_8 = htonl(local_8);
+	memmove(&local_c, &local_8, 4);
+	return local_c;
+}
+
+// Manorsrvr.exe: 004163c0
+float ntohf(float f)
+{
+	float local_c;
+	u_long local_8;
+
+	local_c = f;
+	memmove(&local_8, &local_c, 4);
+	local_8 = ntohl(local_8);
+	memmove(&local_c, &local_8, 4);
+	return local_c;
+}
