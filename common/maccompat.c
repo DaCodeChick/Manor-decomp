@@ -52,6 +52,7 @@ size_t GetPtrSize(const void *ptr)
 }
 
 // Manorsrvr.exe: 0041bab0
+// The Manor.exe: 00401510
 short MemError(void)
 {
 	return gLastError;
