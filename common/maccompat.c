@@ -58,6 +58,36 @@ short MemError(void)
 	return gLastError;
 }
 
+// The Manor.exe: 004015a0
+Handle NewHandle(size_t size)
+{
+	Handle lpMem;
+	void *pvVar1;
+
+	lpMem = (Handle)NewPtrClear(sizeof(struct OpaqueHandle));
+	if (lpMem != NULL)
+	{
+		if ((int)size < 1)
+		{
+			lpMem->ptr = NULL;
+		}
+		else
+		{
+			pvVar1 = NewPtr(size);
+			lpMem->ptr = pvVar1;
+			if (lpMem->ptr == NULL)
+			{
+				HeapFree(gHeap, 0, lpMem);
+				gLastError = memFullErr;
+				return NULL;
+			}
+		}
+		lpMem->size = size;
+		gLastError = 0;
+	}
+	return lpMem;
+}
+
 // Manorsrvr.exe: 0041bad0
 // The Manor.exe: 00401680
 Handle NewHandleClear(size_t size)

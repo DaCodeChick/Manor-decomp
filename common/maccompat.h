@@ -20,6 +20,7 @@ extern "C"
 	EXPORT size_t GetHandleSize(const Handle handle);
 	EXPORT size_t GetPtrSize(const void *ptr);
 	EXPORT short MemError();
+	EXPORT Handle NewHandle(size_t size);
 	EXPORT Handle NewHandleClear(size_t size);
 	EXPORT void *NewPtr(size_t size);
 	EXPORT void *NewPtrClear(size_t size);
