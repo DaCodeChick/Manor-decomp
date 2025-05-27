@@ -36,6 +36,12 @@ void DisposePtr(void *ptr)
 	return;
 }
 
+// The Manor.exe: 00401570
+size_t GetHandleSize(const Handle handle)
+{
+	return handle->size;
+}
+
 // The Manor.exe: 004017e0
 size_t GetPtrSize(const void *ptr)
 {
