@@ -15,6 +15,7 @@ extern "C"
 		memFullErr = -108
 	};
 
+	EXPORT void DisposeHandle(Handle handle);
 	EXPORT void DisposePtr(void *ptr);
 	EXPORT size_t GetPtrSize(const void *ptr);
 	EXPORT short MemError();

@@ -12,6 +12,17 @@ struct OpaqueHandle
 // Manorsrvr.exe: 004942a8
 static short gLastError = 0;
 
+// The Manor.exe: 00401cf0
+void DisposeHandle(Handle handle)
+{
+	if (handle->ptr != NULL)
+	{
+		HeapFree(gHeap, 0, handle->ptr);
+	}
+	HeapFree(gHeap, 0, handle);
+	return;
+}
+
 // manord: 0805c23c
 // Manorsrvr.exe: 0041bac0
 void DisposePtr(void *ptr)
