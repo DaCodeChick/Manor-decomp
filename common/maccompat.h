@@ -24,6 +24,7 @@ extern "C"
 	EXPORT Handle NewHandleClear(size_t size);
 	EXPORT void *NewPtr(size_t size);
 	EXPORT void *NewPtrClear(size_t size);
+	EXPORT void ReallocateHandle(Handle handle, size_t size);
 
 #ifdef __cplusplus
 }

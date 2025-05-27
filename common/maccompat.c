@@ -144,33 +144,47 @@ void *NewPtr(size_t size)
 // Manorsrvr.exe: 0041bbb0
 void *NewPtrClear(size_t size)
 {
+	void *pvVar1;
 #ifdef _WIN32
-	{
-		LPVOID pvVar1;
-
-		pvVar1 = HeapAlloc(gHeap, HEAP_ZERO_MEMORY, size);
-		if (pvVar1 == NULL)
-		{
-			gLastError = memFullErr;
-		}
-		else
-		{
-			gLastError = noErr;
-		}
-		return pvVar1;
-	}
+	pvVar1 = HeapAlloc(gHeap, HEAP_ZERO_MEMORY, size);
 #else
-	void *__s;
-
-	__s = malloc(size);
-	if (__s != NULL)
-	{
-		memset(__s, 0, size);
-	}
-	else
+	pvVar1 = malloc(size);
+#endif // _WIN32
+#ifndef _WIN32
+	memset(pvVar1, 0, size);
+#endif // _WIN32
+	if (pvVar1 == NULL)
 	{
 		gLastError = memFullErr;
 	}
-	return __s;
-#endif // _WIN32
+	else
+	{
+		gLastError = noErr;
+	}
+	return pvVar1;
+}
+
+// The Manor.exe: 00401760
+void ReallocateHandle(Handle handle, size_t size)
+{
+	void *pvVar1;
+
+	if (size == 0)
+	{
+		if (handle->ptr != NULL)
+		{
+			free(handle->ptr);
+		}
+		handle->ptr = NULL;
+	}
+	else
+	{
+		pvVar1 = HeapReAlloc(gHeap, 0, handle->ptr, size);
+		if (pvVar1 != NULL)
+		{
+			handle->ptr = pvVar1;
+			handle->size = size;
+		}
+	}
+	return;
 }
