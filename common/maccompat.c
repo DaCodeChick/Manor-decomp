@@ -27,6 +27,7 @@ short MemError(void)
 }
 
 // Manorsrvr.exe: 0041bad0
+// The Manor.exe: 00401680
 Handle NewHandleClear(size_t size)
 {
 	Handle _Memory;
@@ -45,7 +46,11 @@ Handle NewHandleClear(size_t size)
 			_Memory->ptr = uVar1;
 			if (_Memory->ptr == 0)
 			{
+#ifdef _WIN32
+				HeapFree(gHeap, 0, _Memory);
+#else
 				free(_Memory);
+#endif // _WIN32
 				gLastError = memFullErr;
 				return NULL;
 			}
