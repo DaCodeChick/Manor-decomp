@@ -16,6 +16,7 @@ extern "C"
 		Socket sock;
 		uint dataWaiting;
 		bool awaitingDisconnect;
+		uint bytesSent;
 	} Connection;
 
 	EXPORT uint NwCheckDataWaiting(const Connection *connection);

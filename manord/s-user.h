@@ -7,6 +7,7 @@ struct ServerUserRec
 	ServerUserRec *field2_0x8;
 	ServerUserRec *field3_0xc;
 	byte status;
+	ushort groupID;
 	ushort userID;
 	ServerRoomRec *room;
 	char name[32];

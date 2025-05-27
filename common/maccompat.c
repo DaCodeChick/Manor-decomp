@@ -57,11 +57,15 @@ Handle NewHandleClear(size_t size)
 }
 
 // Manorsrvr.exe: 0041bb30
+// The Manor.exe: 00401630
 void *NewPtr(size_t size)
 {
 	void *pvVar1;
-
+#ifdef _WIN32
+	pvVar1 = HeapAlloc(gHeap, 0, size);
+#else
 	pvVar1 = malloc(size);
+#endif // _WIN32
 	if (pvVar1 == NULL)
 	{
 		gLastError = memFullErr;
