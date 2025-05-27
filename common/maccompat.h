@@ -16,6 +16,7 @@ extern "C"
 	};
 
 	EXPORT void DisposePtr(void *ptr);
+	EXPORT size_t GetPtrSize(const void *ptr);
 	EXPORT short MemError();
 	EXPORT Handle NewHandleClear(size_t size);
 	EXPORT void *NewPtr(size_t size);

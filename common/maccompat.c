@@ -20,6 +20,15 @@ void DisposePtr(void *ptr)
 	return;
 }
 
+// The Manor.exe: 004017e0
+size_t GetPtrSize(const void *ptr)
+{
+	SIZE_T SVar1;
+
+	SVar1 = HeapSize(gHeap, 0, ptr);
+	return SVar1;
+}
+
 // Manorsrvr.exe: 0041bab0
 short MemError(void)
 {
