@@ -25,9 +25,14 @@ void DisposeHandle(Handle handle)
 
 // manord: 0805c23c
 // Manorsrvr.exe: 0041bac0
+// The Manor.exe: 00401550
 void DisposePtr(void *ptr)
 {
+#ifdef _WIN32
+	HeapFree(gHeap, 0, ptr);
+#else
 	free(ptr);
+#endif // _WIN32
 	return;
 }
 
