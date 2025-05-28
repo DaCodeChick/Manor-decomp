@@ -9,6 +9,7 @@ extern "C"
 {
 #endif // __cplusplus
 
+	/// @brief Represents a network connection.
 	typedef struct _Connection
 	{
 		struct _Connection *next;
@@ -20,7 +21,15 @@ extern "C"
 	} Connection;
 
 	EXPORT uint NwCheckDataWaiting(const Connection *connection);
+
 	EXPORT void NwFlagErrorDiscnct(Connection *connection);
+
+	/**
+	 * @brief Retrieves the IP address of the specified connection.
+	 *
+	 * @param connection The connection from which to retrieve the IP address.
+	 * @param buffer A buffer to store the IP address as a string.
+	 */
 	EXPORT void NwGetIPAddress(const Connection *connection, char *buffer);
 
 #ifdef __cplusplus
