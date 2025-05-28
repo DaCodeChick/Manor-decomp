@@ -13,5 +13,12 @@ struct ServerUserRec
 	char name[32];
 };
 
+struct ServerAuthUserRec
+{
+	ServerAuthUserRec *next;
+	char name[32];
+	byte encryptedName[32];
+};
+
 bool UsIsUser(const ServerUserRec *user);
 ServerUserRec *usIsUser(const ServerUserRec *user);
