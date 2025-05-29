@@ -1,13 +1,13 @@
 #pragma once
 
-#include "../common/typedefs.h"
+#include "typedefs.h"
 
-/// @brief Manages threads for the MWF (Multi-Window Framework) application.
-class MWFThreadManager
+/// @brief Manages threads for the application.
+class MWThreadManager
 {
 public:
 	/// @brief Initializes the thread manager.
-	MWFThreadManager();
+	MWThreadManager();
 
 private:
 	undefined1 field0_0x0;

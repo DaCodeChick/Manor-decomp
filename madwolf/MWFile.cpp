@@ -1,14 +1,14 @@
-#include "MWFFile.h"
+#include "MWFile.h"
 
 // Manorsrvr.exe: 004165c0
-MWFFile::MWFFile()
+MWFile::MWFile()
 {
 	m_bIsOpen = false;
 	m_dwLastError = 0;
 }
 
 // Manorsrvr.exe: 004165d0
-MWFFile::~MWFFile()
+MWFile::~MWFile()
 {
 	if (m_bIsOpen != false)
 	{
@@ -17,7 +17,7 @@ MWFFile::~MWFFile()
 }
 
 // Manorsrvr.exe: 004165f0
-bool MWFFile::Create(LPCSTR lpFileName, ushort flags)
+bool MWFile::Create(LPCSTR lpFileName, ushort flags)
 {
 	HANDLE pvVar1;
 	DWORD DVar2;
@@ -54,7 +54,7 @@ bool MWFFile::Create(LPCSTR lpFileName, ushort flags)
 	if ((m_hFile == (HANDLE)INVALID_HANDLE_VALUE) &&
 	    ((m_dwLastError != ERROR_ALREADY_EXISTS || (dwCreationDisposition != OPEN_ALWAYS))))
 	{
-		DVar2 = ::GetLastError();
+		DVar2 = GetLastError();
 		m_dwLastError = DVar2;
 		m_bIsOpen = false;
 	}
@@ -62,13 +62,13 @@ bool MWFFile::Create(LPCSTR lpFileName, ushort flags)
 }
 
 // Manorsrvr.exe: 00416750
-DWORD MWFFile::GetLastError() const
+DWORD MWFile::GetError() const
 {
 	return m_dwLastError;
 }
 
 // Manorsrvr.exe: 004166d0
-DWORD MWFFile::Read(LPVOID lpBuffer, DWORD dwBytesToRead)
+DWORD MWFile::Read(LPVOID lpBuffer, DWORD dwBytesToRead)
 {
 	BOOL BVar1;
 	DWORD DVar2;
@@ -77,7 +77,7 @@ DWORD MWFFile::Read(LPVOID lpBuffer, DWORD dwBytesToRead)
 	BVar1 = ReadFile(m_hFile, lpBuffer, dwBytesToRead, &local_c, NULL);
 	if (BVar1 == 0)
 	{
-		DVar2 = ::GetLastError();
+		DVar2 = GetLastError();
 		m_dwLastError = DVar2;
 		local_c = 0xffffffff;
 	}
@@ -85,14 +85,14 @@ DWORD MWFFile::Read(LPVOID lpBuffer, DWORD dwBytesToRead)
 }
 
 // Manorsrvr.exe: 00416690
-DWORD MWFFile::Seek(LONG lDistanceToMove, byte bMoveMethod)
+DWORD MWFile::Seek(LONG lDistanceToMove, byte bMoveMethod)
 {
 	DWORD DVar1;
 
 	DVar1 = SetFilePointer(m_hFile, lDistanceToMove, NULL, (uint)bMoveMethod);
 	if (DVar1 == INVALID_FILE_SIZE)
 	{
-		DVar1 = ::GetLastError();
+		DVar1 = GetLastError();
 		m_dwLastError = DVar1;
 		DVar1 = INVALID_FILE_SIZE;
 	}
@@ -100,7 +100,7 @@ DWORD MWFFile::Seek(LONG lDistanceToMove, byte bMoveMethod)
 }
 
 // Manorsrvr.exe: 00416710
-DWORD MWFFile::Write(LPCVOID lpBuffer, DWORD dwBytesToWrite)
+DWORD MWFile::Write(LPCVOID lpBuffer, DWORD dwBytesToWrite)
 {
 	BOOL BVar1;
 	DWORD DVar2;
@@ -109,7 +109,7 @@ DWORD MWFFile::Write(LPCVOID lpBuffer, DWORD dwBytesToWrite)
 	BVar1 = WriteFile(this->m_hFile, lpBuffer, dwBytesToWrite, &local_c, NULL);
 	if (BVar1 == 0)
 	{
-		DVar2 = ::GetLastError();
+		DVar2 = GetLastError();
 		this->m_dwLastError = DVar2;
 		local_c = INVALID_FILE_SIZE;
 	}

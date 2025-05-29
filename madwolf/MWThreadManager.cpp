@@ -1,8 +1,8 @@
-#include "MWFThreadManager.h"
+#include "MWThreadManager.h"
 #include "MWF.h"
 
 // The Manor.exe: 0041e4e0
-MWFThreadManager::MWFThreadManager()
+MWThreadManager::MWThreadManager()
 {
 	HANDLE pvVar1;
 

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../common/typedefs.h"
+#include "typedefs.h"
 
 /// @brief A class for handling file operations in a platform-independent manner.
-class EXPORT MWFFile
+class EXPORT MWFile
 {
 public:
 	enum
@@ -14,11 +14,11 @@ public:
 		MWF_OPEN = 0x0008,     /// Open the file if it exists.
 	};
 
-	/// @brief Default constructor for the MWFFile class.
-	MWFFile();
+	/// @brief Default constructor for the MWFile class.
+	MWFile();
 
-	/// @brief Destructor for the MWFFile class.
-	~MWFFile();
+	/// @brief Destructor for the MWFile class.
+	~MWFile();
 
 	/**
 	 * @brief Opens a file with the specified name and flags.
@@ -29,7 +29,7 @@ public:
 	 */
 	bool Create(LPCSTR lpFileName, ushort flags);
 
-	DWORD GetLastError() const;
+	DWORD GetError() const;
 
 	DWORD Read(LPVOID lpBuffer, DWORD dwBytesToRead);
 
