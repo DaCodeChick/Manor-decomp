@@ -30,6 +30,7 @@ enum
 	MSG_USERMOVE3D = 0x4d763344,          /// User move 3D
 	MSG_USERNAME = 0x4e616d65,            /// User name
 	MSG_PROPDATA = 0x50447461,            /// Prop data
+	MSG_PONG = 0x504f4e47,                /// Pong
 	MSG_PROPURL = 0x5055726c,             /// Prop URL
 	MSG_PERMISSION = 0x5065726d,          /// Permission
 	MSG_PING = 0x50696e67,                /// Ping

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "typedefs.h"
+#include "../common/typedefs.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -9,7 +9,7 @@ extern "C"
 
 	typedef struct MWFThread;
 
-	EXPORT HANDLE MWF_CreateSemaphore();
+	EXPORT HANDLE MWF_CreateSemaphore(const char *name);
 	EXPORT void MWF_DeleteSemaphore(HANDLE semaphore);
 	EXPORT void MWF_ReleaseSemaphore(HANDLE semaphore);
 	EXPORT BOOL MWF_TrySemaphore(HANDLE semaphore);

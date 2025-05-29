@@ -29,6 +29,7 @@ typedef unsigned short ushort;
 #define CONCAT31(msb3, lsb1) (((uint)(msb3) << 8) | ((uint)(lsb1) & 0xFF))
 #define CONCAT44(a, b) ((ulonglong)(a) << 32 | (ulonglong)(b))
 #define SUB41(a, b) ((uint)((uint)(a) - (uint)(b)))
+#define UNUSED(x) (void)(x)
 
 #ifdef _WIN32
 extern HANDLE gHeap;

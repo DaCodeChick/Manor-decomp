@@ -8,9 +8,11 @@ struct
 
 // Manorsrvr.exe: 0041cdd0
 // The Manor.exe: 0040f510
-HANDLE MWF_CreateSemaphore(void)
+HANDLE MWF_CreateSemaphore(const char *name)
 {
 	HANDLE pvVar1;
+
+	UNUSED(name);
 	pvVar1 = CreateMutexA(NULL, 0, NULL);
 	return pvVar1;
 }

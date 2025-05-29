@@ -1,6 +1,6 @@
 #pragma once
 
-#include "typedefs.h"
+#include "../common/typedefs.h"
 
 /// @brief A class for handling file operations in a platform-independent manner.
 class EXPORT MWFFile
