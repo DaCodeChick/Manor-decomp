@@ -7,7 +7,7 @@ extern "C"
 {
 #endif // __cplusplus
 
-	typedef struct MWFThread;
+	typedef struct MWThread;
 
 	EXPORT HANDLE MWF_CreateSemaphore(const char *name);
 	EXPORT void MWF_DeleteSemaphore(HANDLE semaphore);

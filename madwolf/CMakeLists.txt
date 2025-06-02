@@ -1,4 +1,5 @@
 set(SOURCES
+	error.cpp
 	maccompat.c
 	MWF.c
 	MWFile.cpp
@@ -9,9 +10,9 @@ set(SOURCES
 )
 
 set(HEADERS
+	error.h
 	maccompat.h
 	manor.h
-	mw_exception.h
 	MWF.h
 	MWFile.h
 	MWThreadManager.h

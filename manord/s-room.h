@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../common/typedefs.h"
+#include "../madwolf/typedefs.h"
 
 struct ServerRoomRec
 {
@@ -15,3 +15,6 @@ struct ServerRoomRec
 	char description[512];
 	char source[512];
 };
+
+ServerRoomRec *RmNextRoom(const ServerRoomRec *room);
+ServerRoomRec *RmStartIterator();

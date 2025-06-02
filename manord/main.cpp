@@ -1,4 +1,4 @@
-#include "../common/typedefs.h"
+#include "../madwolf/typedefs.h"
 
 #ifdef _WIN32
 HANDLE gHeap = NULL;

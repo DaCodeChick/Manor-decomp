@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../common/typedefs.h"
+#include "../madwolf/typedefs.h"
 
 struct IPBanRec
 {
