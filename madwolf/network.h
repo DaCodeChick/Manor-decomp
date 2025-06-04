@@ -20,8 +20,18 @@ extern "C"
 		uint bytesSent;
 	} Connection;
 
+	/**
+	 * @brief Checks if there is data waiting to be sent on the specified connection.
+	 * @param connection The connection to check.
+	 * @return The number of bytes waiting to be sent.
+	 */
 	EXPORT uint NwCheckDataWaiting(const Connection *connection);
 
+	/**
+	 * @brief Checks if the specified connection is valid.
+	 *
+	 * @param connection The connection to check.
+	 */
 	EXPORT void NwFlagErrorDiscnct(Connection *connection);
 
 	/**

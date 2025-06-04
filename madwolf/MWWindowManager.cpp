@@ -1,8 +1,9 @@
-#include "MWThreadManager.h"
+#include "MWWindowManager.h"
 #include "MWF.h"
 
+// Manorsrvr.exe: 00419850
 // The Manor.exe: 0041e4e0
-MWThreadManager::MWThreadManager()
+MWWindowManager::MWWindowManager()
 {
 	HANDLE pvVar1;
 

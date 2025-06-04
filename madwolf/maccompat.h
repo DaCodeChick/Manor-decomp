@@ -6,12 +6,13 @@
 extern "C"
 {
 #endif // __cplusplus
+	/// @brief Opaque handle type.
 	typedef struct OpaqueHandle *Handle;
 
 	enum
 	{
-		noErr = 0,        /// No error occurred.
-		memFullErr = -108 /// Memory full error.
+		noErr = 0,        ///< No error occurred.
+		memFullErr = -108 ///< Memory full error.
 	};
 
 	/**

@@ -1,16 +1,21 @@
+#include "../madwolf/network.h"
 #include "s-room.h"
 
 struct ServerUserRec
 {
 	ServerUserRec *nextUser;
 	ServerUserRec *prevUser;
-	ServerUserRec *field2_0x8;
-	ServerUserRec *field3_0xc;
-	byte status;
+	char address[32];
+	char name[32];
+	uint flags;
 	ushort groupID;
 	ushort userID;
 	ServerRoomRec *room;
-	char name[32];
+	Connection *connection;
+	bool waitingForDisconnect;
+	ushort width;
+	ushort height;
+	ushort voice;
 };
 
 struct ServerAuthUserRec

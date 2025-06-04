@@ -2,12 +2,12 @@
 
 #include "typedefs.h"
 
-/// @brief Manages threads for the application.
-class MWThreadManager
+/// @brief Manages windows for the application.
+class MWWindowManager
 {
 public:
-	/// @brief Initializes the thread manager.
-	MWThreadManager();
+	/// @brief Initializes the window manager.
+	MWWindowManager();
 
 private:
 	undefined1 field0_0x0;

@@ -44,6 +44,7 @@ enum
 	MSG_USERENTER = 0x526d456e,           /// User enter
 	MSG_ROOMENTER = 0x526d496e,           /// Room enter
 	MSG_ROOMLOCK = 0x526d4c6b,            /// Room lock
+	MSG_USEREXIT = 0x526d4c76,            /// User exit
 	MSG_ROOMNAME = 0x526d4e6d,            /// Room name
 	MSG_ROOMOCC = 0x526d4f63,             /// Room occupancy
 	MSG_ROOMREQUEST = 0x526d5271,         /// Room request

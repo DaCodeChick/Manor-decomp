@@ -8,10 +8,10 @@ class EXPORT MWFile
 public:
 	enum
 	{
-		MWF_READ = 0x0001,     /// Open the file for reading.
-		MWF_WRITE = 0x0002,    /// Open the file for writing.
-		MWF_TRUNCATE = 0x0004, /// Truncate the file to zero length if it exists.
-		MWF_OPEN = 0x0008,     /// Open the file if it exists.
+		MWF_READ = 0x0001,     ///< Open the file for reading.
+		MWF_WRITE = 0x0002,    ///< Open the file for writing.
+		MWF_TRUNCATE = 0x0004, ///< Truncate the file to zero length if it exists.
+		MWF_OPEN = 0x0008,     ///< Open the file if it exists.
 	};
 
 	/// @brief Default constructor for the MWFile class.
@@ -29,8 +29,20 @@ public:
 	 */
 	bool Create(LPCSTR lpFileName, ushort flags);
 
+	/**
+	 * @brief Gets the last error code.
+	 *
+	 * @return The last error code.
+	 */
 	DWORD GetError() const;
 
+	/**
+	 * @brief Reads data from the file.
+	 *
+	 * @param lpBuffer Pointer to the buffer to receive the data.
+	 * @param dwBytesToRead Number of bytes to read.
+	 * @return The number of bytes read, or 0 if an error occurred.
+	 */
 	DWORD Read(LPVOID lpBuffer, DWORD dwBytesToRead);
 
 	/**

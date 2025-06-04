@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../common/typedefs.h"
+#include "typedefs.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -10,8 +10,7 @@ extern "C"
 	/**
 	 * @brief Decode a string into user ID, expiration date, product ID, and maximum occupancy.
 	 *
-	 * @param str The string to decode, which is expected to be in the format
-	 * "userID:expires:productID:maxOccupancy".
+	 * @param str The string to decode
 	 * @param userID Pointer to store the decoded user ID.
 	 * @param expires Pointer to store the decoded expiration date (as a Unix timestamp).
 	 * @param productID Pointer to store the decoded product ID.
