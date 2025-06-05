@@ -6,7 +6,7 @@ struct ServerRoomRec
 {
 	ServerRoomRec *nextRoom;
 	ServerRoomRec *prevRoom;
-	ushort roomID;
+	short roomID;
 	ushort flags;
 	ushort maxOccupancy;
 	ushort width;
@@ -16,5 +16,8 @@ struct ServerRoomRec
 	char source[512];
 };
 
+short RmGetID(const ServerRoomRec *room);
+bool RmMaySpoof(const ServerRoomRec *room);
+bool RmMayWhisper(const ServerRoomRec *room);
 ServerRoomRec *RmNextRoom(const ServerRoomRec *room);
 ServerRoomRec *RmStartIterator();
