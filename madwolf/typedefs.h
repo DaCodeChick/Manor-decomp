@@ -5,7 +5,7 @@
 #define EXPORT __declspec(dllexport)
 typedef SOCKET Socket; ///< Socket type
 #else
-#define EXPORT
+#define EXPORT __attribute__((visibility("default")))
 typedef int Socket; ///< Socket type
 #endif
 
