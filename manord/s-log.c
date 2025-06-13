@@ -99,6 +99,39 @@ void ErrorExit(const char *format, ...)
 	exit(1);
 }
 
+// manord: 080485b8
+// Manorsrvr.exe: 00411950
+void LogError(const ServerUserRec *user, const char *format, ...)
+{
+	char cVar1;
+	char *pcVar2;
+	uint uVar3;
+	char *pcVar4;
+	char local_204[512];
+	va_list args;
+
+	va_start(args, format);
+	vsprintf(local_204, format, args);
+	va_end(args);
+	uVar3 = strlen(local_204);
+	pcVar4 = local_204;
+	if ((uVar3 != 1) && (local_204[uVar3 - 2] == '\r'))
+	{
+		local_204[uVar3 - 2] = '\n';
+	}
+	if (user == NULL)
+	{
+		LogString(NULL, "Error", "%s", local_204);
+	}
+	else
+	{
+		pcVar4 = local_204;
+		pcVar2 = strerror(user->userID);
+		LogString(NULL, "Error", "%d (%s) %s", user->userID, pcVar2, pcVar4);
+	}
+	return;
+}
+
 // manord: 080484e8
 // Manorsrvr.exe: 00411820
 int LogString(const ServerUserRec *user, const char *level, const char *format, ...)

@@ -21,6 +21,15 @@ void DbHexDump(const void *data, size_t size);
  */
 void ErrorExit(const char *format, ...);
 
+/**
+ * @brief Logs a formatted error message for a specific user.
+ *
+ * @param user Pointer to the user record.
+ * @param format Format string (printf-style).
+ * @param ... Additional arguments for the format string.
+ */
+void LogError(const ServerUserRec *user, const char *format, ...);
+
 /** @brief Logs a formatted string to the log file.
  *
  * @param user Pointer to the user record.
