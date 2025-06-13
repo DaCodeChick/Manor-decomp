@@ -2,6 +2,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
 
@@ -83,6 +84,19 @@ void DbHexDump(const void *data, size_t size)
 		} while (uVar4 < size);
 	}
 	return;
+}
+
+// manord: 080484b4
+void ErrorExit(const char *format, ...)
+{
+	char local_204[512];
+	va_list args;
+
+	va_start(args, format);
+	vsnprintf(local_204, sizeof(local_204), format, args);
+	va_end(args);
+	LogString(NULL, "errext", local_204);
+	exit(1);
 }
 
 // manord: 080484e8
