@@ -18,6 +18,15 @@ short RmGetID(const ServerRoomRec *room)
 	return 0;
 }
 
+// manord: 080580d8
+// Manorsrvr.exe: 00406b60
+void RmGetRoomDim(const ServerRoomRec *room, ushort *width, ushort *height)
+{
+	*width = room->width;
+	*height = room->height;
+	return;
+}
+
 // manord: 08056548
 // Manorsrvr.exe: 00405050
 bool RmMayLooseProps(const ServerRoomRec *room)

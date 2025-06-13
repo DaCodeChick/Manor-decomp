@@ -25,6 +25,15 @@ typedef struct ServerRoomRec
  */
 short RmGetID(const ServerRoomRec *room);
 
+/**
+ * @brief Get the dimensions of a server room.
+ *
+ * @param room Pointer to the ServerRoomRec structure representing the room.
+ * @param width Pointer to a ushort variable to store the width of the room.
+ * @param height Pointer to a ushort variable to store the height of the room.
+ */
+void RmGetRoomDim(const ServerRoomRec *room, ushort *width, ushort *height);
+
 bool RmMayLooseProps(const ServerRoomRec *room);
 
 /**
