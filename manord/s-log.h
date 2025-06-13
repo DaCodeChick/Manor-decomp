@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../madwolf/typedefs.h"
+#include "s-user.h"
 
 /// @brief Closes the log file and releases any resources.
 void CloseLog();
@@ -12,3 +12,13 @@ void CloseLog();
  * @param size Size of the memory block in bytes.
  */
 void DbHexDump(const void *data, size_t size);
+
+/** @brief Logs a formatted string to the log file.
+ *
+ * @param user Pointer to the user record.
+ * @param level Log level (e.g., INFO, WARNING, ERROR).
+ * @param format Format string (printf-style).
+ * @param ... Additional arguments for the format string.
+ * @return Number of characters written to the log file, or a negative value on error.
+ */
+int LogString(const ServerUserRec *user, int level, const char *format, ...);

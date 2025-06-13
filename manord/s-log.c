@@ -1,10 +1,15 @@
 #include "s-log.h"
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 // manord: 080a3130
 static FILE *gLogFile = NULL;
+
+// manord: 080a36f0
+static bool gNoFork = false;
 
 // manord: 08048494
 void CloseLog(void)
@@ -78,4 +83,43 @@ void DbHexDump(const void *data, size_t size)
 		} while (uVar4 < size);
 	}
 	return;
+}
+
+// manord: 080484e8
+// Manorsrvr.exe: 00411820
+int LogString(const ServerUserRec *user, int level, const char *format, ...)
+{
+	struct tm *__tp;
+	int iVar1;
+	time_t local_51c;
+	char local_518[256];
+	char local_418[20];
+	char local_404[512];
+	char local_204[512];
+	va_list args;
+
+	va_start(args, format);
+	vsnprintf(local_204, 0x200, format, args);
+	va_end(args);
+	time(&local_51c);
+	__tp = localtime(&local_51c);
+	strftime(local_418, 0x14, "%m/%d/%Y %H:%M:%S", __tp);
+	/*UsGetUserLogInfo(user,local_518);
+	snprintf(local_404,0x200,"%s %s %8.8s %s\n",local_418,local_518,level,
+	         local_204);*/
+	snprintf(local_404, 0x200, "%s %8.8s %s\n", local_418, level, local_204);
+	if (gLogFile == NULL)
+	{
+		iVar1 = fprintf(stderr, "%s", local_404);
+	}
+	else
+	{
+		fputs(local_404, gLogFile);
+		iVar1 = fflush_locked(gLogFile);
+	}
+	if (gNoFork)
+	{
+		iVar1 = printf("%s", local_404);
+	}
+	return iVar1;
 }
