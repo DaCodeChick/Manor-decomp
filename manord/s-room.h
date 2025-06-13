@@ -2,22 +2,56 @@
 
 #include "../madwolf/typedefs.h"
 
+/// @brief Represents a server room record in the system.
 struct ServerRoomRec
 {
-	ServerRoomRec *nextRoom;
-	ServerRoomRec *prevRoom;
-	short roomID;
-	ushort flags;
-	ushort maxOccupancy;
-	ushort width;
-	ushort height;
-	char name[65];
-	char description[512];
-	char source[512];
+	ServerRoomRec *nextRoom; ///< Pointer to the next room in the linked list.
+	ServerRoomRec *prevRoom; ///< Pointer to the previous room in the linked list.
+	short roomID;            ///< Unique identifier for the room.
+	ushort flags;            ///< Flags associated with the room.
+	ushort maxOccupancy;     ///< Maximum occupancy of the room.
+	ushort width;            ///< Width of the room.
+	ushort height;           ///< Height of the room.
+	char name[65];           ///< Name of the room.
+	char description[512];   ///< Description of the room.
+	char source[512];        ///< Source of the room.
 };
 
+/**
+ * @brief Get the ID of a server room.
+ *
+ * @param room Pointer to the ServerRoomRec structure representing the room.
+ * @return The ID of the room.
+ */
 short RmGetID(const ServerRoomRec *room);
+
+/**
+ * @brief Check if a player may spoof in a server room.
+ *
+ * @param room Pointer to the ServerRoomRec structure representing the room.
+ * @return True if the player may spoof in the room, false otherwise.
+ */
 bool RmMaySpoof(const ServerRoomRec *room);
+
+/**
+ * @brief Check if a player may whisper in a server room.
+ *
+ * @param room Pointer to the ServerRoomRec structure representing the room.
+ * @return True if the player may whisper in the room, false otherwise.
+ */
 bool RmMayWhisper(const ServerRoomRec *room);
+
+/**
+ * @brief Get the next room in the linked list.
+ *
+ * @param room Pointer to the ServerRoomRec structure representing the current room.
+ * @return Pointer to the next room in the linked list, or NULL if there is no next room.
+ */
 ServerRoomRec *RmNextRoom(const ServerRoomRec *room);
+
+/**
+ * @brief Get the first room in the linked list.
+ *
+ * @return Pointer to the first room in the linked list, or NULL if there are no rooms.
+ */
 ServerRoomRec *RmStartIterator();

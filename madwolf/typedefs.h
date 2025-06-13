@@ -9,6 +9,8 @@ typedef SOCKET Socket; ///< Socket type
 typedef int Socket; ///< Socket type
 #endif
 
+#include <stdbool.h>
+
 typedef unsigned char byte;            ///< 8-bit unsigned integer
 typedef long long longlong;            ///< 64-bit signed integer
 typedef unsigned char uchar;           ///< 8-bit unsigned integer

@@ -8,7 +8,7 @@ extern "C"
 #endif // __cplusplus
 
 	/// @brief Opaque structure representing a thread.
-	typedef struct OpaqueMWThread MWThread;
+	typedef struct OpaqueThread Thread;
 
 	/**
 	 * @brief Create a semaphore.
