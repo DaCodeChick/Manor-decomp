@@ -16,9 +16,9 @@ void DbHexDump(const void *data, size_t size);
 /** @brief Logs a formatted string to the log file.
  *
  * @param user Pointer to the user record.
- * @param level Log level (e.g., INFO, WARNING, ERROR).
+ * @param level Logging level (e.g., "INFO", "ERROR").
  * @param format Format string (printf-style).
  * @param ... Additional arguments for the format string.
  * @return Number of characters written to the log file, or a negative value on error.
  */
-int LogString(const ServerUserRec *user, int level, const char *format, ...);
+int LogString(const ServerUserRec *user, const char *level, const char *format, ...);

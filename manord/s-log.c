@@ -87,7 +87,7 @@ void DbHexDump(const void *data, size_t size)
 
 // manord: 080484e8
 // Manorsrvr.exe: 00411820
-int LogString(const ServerUserRec *user, int level, const char *format, ...)
+int LogString(const ServerUserRec *user, const char *level, const char *format, ...)
 {
 	struct tm *__tp;
 	int iVar1;
