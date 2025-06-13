@@ -18,6 +18,13 @@ short RmGetID(const ServerRoomRec *room)
 	return 0;
 }
 
+// manord: 08056548
+// Manorsrvr.exe: 00405050
+bool RmMayLooseProps(const ServerRoomRec *room)
+{
+	return (room->flags & RF_NoLooseProps) == 0;
+}
+
 // manord: 08057c64
 // Manorsrvr.exe: 004066f0
 bool RmMaySpoof(const ServerRoomRec *room)

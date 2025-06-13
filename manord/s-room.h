@@ -25,6 +25,8 @@ typedef struct ServerRoomRec
  */
 short RmGetID(const ServerRoomRec *room);
 
+bool RmMayLooseProps(const ServerRoomRec *room);
+
 /**
  * @brief Check if a player may spoof in a server room.
  *
