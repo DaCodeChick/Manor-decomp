@@ -3,19 +3,19 @@
 #include "../madwolf/typedefs.h"
 
 /// @brief Represents a server room record in the system.
-struct ServerRoomRec
+typedef struct ServerRoomRec
 {
-	ServerRoomRec *nextRoom; ///< Pointer to the next room in the linked list.
-	ServerRoomRec *prevRoom; ///< Pointer to the previous room in the linked list.
-	short roomID;            ///< Unique identifier for the room.
-	ushort flags;            ///< Flags associated with the room.
-	ushort maxOccupancy;     ///< Maximum occupancy of the room.
-	ushort width;            ///< Width of the room.
-	ushort height;           ///< Height of the room.
-	char name[65];           ///< Name of the room.
-	char description[512];   ///< Description of the room.
-	char source[512];        ///< Source of the room.
-};
+	struct ServerRoomRec *nextRoom; ///< Pointer to the next room in the linked list.
+	struct ServerRoomRec *prevRoom; ///< Pointer to the previous room in the linked list.
+	short roomID;                   ///< Unique identifier for the room.
+	ushort flags;                   ///< Flags associated with the room.
+	ushort maxOccupancy;            ///< Maximum occupancy of the room.
+	ushort width;                   ///< Width of the room.
+	ushort height;                  ///< Height of the room.
+	char name[65];                  ///< Name of the room.
+	char description[512];          ///< Description of the room.
+	char source[512];               ///< Source of the room.
+} ServerRoomRec;
 
 /**
  * @brief Get the ID of a server room.
@@ -40,6 +40,14 @@ bool RmMaySpoof(const ServerRoomRec *room);
  * @return True if the player may whisper in the room, false otherwise.
  */
 bool RmMayWhisper(const ServerRoomRec *room);
+
+/**
+ * @brief Convert a room name to its corresponding ID.
+ *
+ * @param name The name of the room.
+ * @return The ID of the room, or 0 if not found.
+ */
+short RmNameToID(const char *name);
 
 /**
  * @brief Get the next room in the linked list.
