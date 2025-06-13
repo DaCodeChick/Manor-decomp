@@ -10,27 +10,27 @@ extern "C"
 	/**
 	 * @brief Encrypts or decrypts data using a key and a permutation table.
 	 *
-	 * @param data
-	 * @param key
-	 * @param table
+	 * @param data Pointer to the data to encrypt or decrypt.
+	 * @param key Pointer to the encryption key.
+	 * @param table Pointer to the permutation table.
 	 */
 	EXPORT void EnCrypt(void *data, void *key, const void *table);
 
 	/**
 	 * @brief Decrypts data using a key and a permutation table.
 	 *
-	 * @param data
-	 * @param key
-	 * @param table
+	 * @param data Pointer to the data to decrypt.
+	 * @param key Pointer to the decryption key.
+	 * @param table Pointer to the permutation table.
 	 */
 	EXPORT void EnDecrypt(void *data, void *key, const void *table);
 
 	/**
 	 * @brief Generates a permutation table based on a seed.
 	 *
-	 * @param seed
-	 * @param forward
-	 * @param reverse
+	 * @param seed Pointer to the seed value.
+	 * @param forward Pointer to the forward permutation table.
+	 * @param reverse Pointer to the reverse permutation table.
 	 */
 	EXPORT void EnPermtable(short seed, void *forward, const void *reverse);
 

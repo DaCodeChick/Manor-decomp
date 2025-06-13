@@ -16,7 +16,7 @@ static void enBitSet(uint *value, short bit)
 	{
 		sVar2 = bit + 7;
 	}
-	pbVar1 = (byte *)((int)(sVar2 >> 3) + (ulonglong)value);
+	pbVar1 = (byte *)((int)(sVar2 >> 3) + (size_t)value);
 	*pbVar1 = *pbVar1 | (byte)(0x80 >> ((char)bit - (char)((sVar2 >> 3) << 3) & 0x1fU));
 	return;
 }
@@ -61,7 +61,7 @@ void EnCrypt(void *data, void *key, void *table)
 	sVar3 = 0;
 	do
 	{
-		iVar2 = enBitTst((ulonglong)data, (short)*(char *)((int)sVar3 + (ulonglong)table));
+		iVar2 = enBitTst((size_t)data, (short)*(char *)((int)sVar3 + (size_t)table));
 		if (iVar2 != 0)
 		{
 			enBitSet(&local_14, sVar3);
@@ -76,14 +76,14 @@ void EnCrypt(void *data, void *key, void *table)
 	{
 		sVar1 = enRandom(0, 0x100);
 		*(char *)key = (char)sVar1;
-		*(byte *)((ulonglong)&local_14 + (int)sVar3) =
-		    *(byte *)((ulonglong)&local_14 + (int)sVar3) ^ *(byte *)key;
+		*(byte *)((size_t)&local_14 + (int)sVar3) =
+		    *(byte *)((size_t)&local_14 + (int)sVar3) ^ *(byte *)key;
 		sVar3 = sVar3 + 1;
 	} while (sVar3 < 0x10);
 	*(uint *)data = local_14;
-	*(undefined4 *)((ulonglong)data + 4) = local_10;
-	*(undefined4 *)((ulonglong)data + 8) = local_c;
-	*(undefined4 *)((ulonglong)data + 0xc) = local_8;
+	*(undefined4 *)((size_t)data + 4) = local_10;
+	*(undefined4 *)((size_t)data + 8) = local_c;
+	*(undefined4 *)((size_t)data + 0xc) = local_8;
 	return;
 }
 
@@ -107,14 +107,13 @@ void EnDecrypt(void *data, void *key, const void *table)
 	{
 		sVar2 = enRandom(0, 0x100);
 		*(char *)key = (char)sVar2;
-		*(byte *)((int)sVar1 + (ulonglong)data) =
-		    *(byte *)((int)sVar1 + (ulonglong)data) ^ *(byte *)key;
+		*(byte *)((int)sVar1 + (size_t)data) = *(byte *)((int)sVar1 + (size_t)data) ^ *(byte *)key;
 		sVar1 = sVar1 + 1;
 	} while (sVar1 < 0x10);
 	sVar1 = 0;
 	do
 	{
-		iVar3 = enBitTst((ulonglong)data, (short)*(char *)((int)sVar1 + (ulonglong)table));
+		iVar3 = enBitTst((size_t)data, (short)*(char *)((int)sVar1 + (size_t)table));
 		if (iVar3 != 0)
 		{
 			enBitSet(&local_14, sVar1);
@@ -122,9 +121,9 @@ void EnDecrypt(void *data, void *key, const void *table)
 		sVar1 = sVar1 + 1;
 	} while (sVar1 < 0x80);
 	*(uint *)data = local_14;
-	*(undefined4 *)((ulonglong)data + 4) = local_10;
-	*(undefined4 *)((ulonglong)data + 8) = local_c;
-	*(undefined4 *)((ulonglong)data + 0xc) = local_8;
+	*(undefined4 *)((size_t)data + 4) = local_10;
+	*(undefined4 *)((size_t)data + 8) = local_c;
+	*(undefined4 *)((size_t)data + 0xc) = local_8;
 	return;
 }
 
@@ -142,19 +141,19 @@ void EnPermtable(short seed, void *forward, const void *reverse)
 	do
 	{
 		sVar1 = enRandom(0, 0x80);
-		if (*(char *)((int)sVar1 + (ulonglong)forward) != -1)
+		if (*(char *)((int)sVar1 + (size_t)forward) != -1)
 		{
 			seed_00 = 1;
 			while (1)
 			{
 				sVar1 = enRandom(seed_00, 0x80);
-				if (*(char *)((int)sVar1 + (ulonglong)forward) == -1)
+				if (*(char *)((int)sVar1 + (size_t)forward) == -1)
 					break;
 				seed_00 = seed_00 + 1;
 			}
 		}
-		*(char *)((int)sVar1 + (ulonglong)forward) = (char)sVar2;
-		*(char *)((int)sVar2 + (ulonglong)reverse) = (char)sVar1;
+		*(char *)((int)sVar1 + (size_t)forward) = (char)sVar2;
+		*(char *)((int)sVar2 + (size_t)reverse) = (char)sVar1;
 		sVar2 = sVar2 + 1;
 	} while (sVar2 < 0x80);
 	return;
