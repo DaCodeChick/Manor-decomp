@@ -7,6 +7,53 @@
 // Manorsrvr.exe: 0048b5d0
 static ServerRoomRec *RMFirstRoom = NULL;
 
+// manord: 08055888
+// Manorsrvr.exe: 00404430
+ServerRoomRec *RmFindFile(const char *path)
+{
+	int iVar1;
+	ServerRoomRec *pSVar2;
+
+	pSVar2 = RMFirstRoom;
+	if (RMFirstRoom != NULL)
+	{
+		do
+		{
+			iVar1 = strcmp(path, pSVar2->filePath);
+			if (iVar1 == 0)
+			{
+				return pSVar2;
+			}
+			pSVar2 = pSVar2->nextRoom;
+		} while (pSVar2 != NULL);
+	}
+	return pSVar2;
+}
+
+// manord: 08055eb0
+// Manorsrvr.exe: 00404a10
+void RmGetAvailID(short *id)
+{
+  ushort uVar1;
+  ServerRoomRec *pSVar2;
+  
+  uVar1 = 99;
+  do {
+    uVar1 = uVar1 + 1;
+    pSVar2 = RMFirstRoom;
+    if (RMFirstRoom != NULL) {
+      do {
+        if (pSVar2->roomID == uVar1) break;
+        pSVar2 = pSVar2->nextRoom;
+      } while (pSVar2 != NULL);
+    }
+    if (pSVar2 == NULL) {
+      *id = uVar1;
+      return;
+    }
+  } while( true );
+}
+
 // manord: 08057c2c
 // Manorsrvr.exe: 004066b0
 short RmGetID(const ServerRoomRec *room)

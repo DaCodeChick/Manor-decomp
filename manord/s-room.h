@@ -14,8 +14,24 @@ typedef struct ServerRoomRec
 	ushort height;                  ///< Height of the room.
 	char name[65];                  ///< Name of the room.
 	char description[512];          ///< Description of the room.
-	char source[512];               ///< Source of the room.
+	char filePath[512];             ///< File path to the room's data.
+	short numUsers;                 ///< Number of users currently in the room.
 } ServerRoomRec;
+
+/**
+ * @brief Find a server room by its file path.
+ *
+ * @param path The file path of the room to find.
+ * @return Pointer to the found room, or NULL if not found.
+ */
+ServerRoomRec *RmFindFile(const char *path);
+
+/**
+ * @brief Get the next available room ID.
+ *
+ * @param id Pointer to a short variable to store the next available room ID.
+ */
+void RmGetAvailID(short *id);
 
 /**
  * @brief Get the ID of a server room.
